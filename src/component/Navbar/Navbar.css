@@ -1,0 +1,8 @@
+.linkClass {
+  color: rgb(12, 114, 122);
+  padding-right: 10px;
+}
+
+a:hover{
+  color: rgb(240, 185, 70);
+}
