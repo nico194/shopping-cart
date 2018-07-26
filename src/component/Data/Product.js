@@ -13,7 +13,7 @@ const products = [
     },
     {
       "id": 3,
-      "description": 'description2',
+      "description": 'description3',
       "price": 30.00,
       "image": 'https://www.wish.com/product/59c7613076fa4d3bb0ae4fbb'
     }

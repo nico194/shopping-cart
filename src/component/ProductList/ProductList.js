@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import store from '../../store.js';
+import store from '../../store';
 
-import Products from '../Data/Product.js';
-import { addToCart } from '../../ActionCreator/ActionProductList.js'
+import Products from '../Data/Product';
+import { addToCart } from '../../ActionCreator/ActionProductList'
 
 class ProductList extends Component {
   constructor(){
@@ -14,21 +14,22 @@ class ProductList extends Component {
     }
   }
 
+  addToCart(product){
+    store.dispatch(addToCart(product));
+  }
+
   render() {
     return (
       <div className="App-product-list">
         <ul>
           {this.state.products.map(product =>
-            <li id={product.id}>{product.description} <button type="button" className="btn btn-primary" onClick={() => this.addToCart(product)}>Buy</button></li>
+            <li key={product.id}>{product.description} <button type="button" className="btn btn-primary" onClick={() => this.addToCart(product)}>Buy</button></li>
           )}
         </ul>
       </div>
     );
   }
 
-  addToCart(product){
-    store.dispatch(addToCart(product));
-  }
 }
 
 export default ProductList;

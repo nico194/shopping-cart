@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import trash from './trahs.png'
+
 import store from '../../store.js'
 import { removeFromCart } from '../../ActionCreator/ActionShoppingCart.js'
 
@@ -11,9 +13,18 @@ class ShoppingCart extends Component {
     this.state = {
       cart: []
     };
+
+    store.subscribe( () => {
+      this.setState({
+        cart: store.getState().cart
+      })
+    });
+
   }
 
-
+  removeFromCart(product){
+    store.dispatch(removeFromCart(product))
+  }
 
   render() {
     return (
@@ -23,18 +34,17 @@ class ShoppingCart extends Component {
             <div className="col-12">
               <ul>
                 {this.state.cart.map( product =>
-                  <li key={product.id}>{product.description} <button type="button" onClick={ () => this.removeFromCart(product)}></button></li>
+                  <li key={product.id}>{product.description} <img src={trash} alt="" onClick={() => this.removeFromCart(product)}/>
+                  </li>
                 )}
               </ul>
             </div>
           </div>
         </div>
+
+
       </div>
     );
-  }
-
-  removeFromCart(product){
-    store.dispatch(removeFromCart(product))
   }
 
 }
